@@ -3,11 +3,12 @@
 
 #include <iostream>
 #include "Fraction.h"
+#include <iomanip>
 
 int main()
 {
-	Fraction a(4, 7);
-	Fraction b(2, 5);
-	Fraction c = a/b;
-	std::cout << c.getNumerator() << '/' << c.getDenominator();
+	Fraction a = a.InputFraction();
+	Fraction c= a^-2;
+	c.OutputFraction();
+	std::cout << std::setprecision(10) << "\n" << c.ConvertFraction();
 }

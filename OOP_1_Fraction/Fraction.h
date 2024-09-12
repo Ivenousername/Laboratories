@@ -1,9 +1,12 @@
 #pragma once
+#include <iostream>
 class Fraction
 {
 private:
 	int numerator;
 	int denominator;
+	int gcd();
+
 public:
 	Fraction(int numerator=1, int denominator=1) {
 		setNumerator(numerator);
@@ -26,4 +29,15 @@ public:
 	Fraction operator-(Fraction b);
 	Fraction operator*(Fraction b);
 	Fraction operator/(Fraction b);
+	bool operator<(Fraction b);
+	bool operator>(Fraction b);
+	bool operator==(Fraction b);
+	bool operator!=(Fraction b);
+	void Reduce();
+	
+	void OutputFraction();
+	Fraction InputFraction();
+
+	Fraction operator^(int power);
+	float ConvertFraction();
 };
