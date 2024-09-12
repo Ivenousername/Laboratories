@@ -6,8 +6,8 @@
 
 int main()
 {
-	Fraction a(1, 3);
-	Fraction b(2, 6);
-	Fraction c = a + b;
+	Fraction a(4, 7);
+	Fraction b(2, 5);
+	Fraction c = a/b;
 	std::cout << c.getNumerator() << '/' << c.getDenominator();
 }

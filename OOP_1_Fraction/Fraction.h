@@ -23,4 +23,7 @@ public:
 	}
 
 	Fraction operator+(Fraction b);
+	Fraction operator-(Fraction b);
+	Fraction operator*(Fraction b);
+	Fraction operator/(Fraction b);
 };
