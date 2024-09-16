@@ -8,7 +8,8 @@
 int main()
 {
 	Fraction a = a.InputFraction();
-	Fraction c= a^2;
+	Fraction b = b.InputFraction();
+	Fraction c= a+b;
 	c.OutputFraction();
-	std::cout << std::setprecision(10) << "\n" << c.ConvertFraction();
+	//std::cout << std::setprecision(5) << "\n" << c.ConvertFraction();
 }

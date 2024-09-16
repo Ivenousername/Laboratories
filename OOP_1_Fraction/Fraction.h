@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <stdexcept>
 class Fraction
 {
 private:
@@ -40,4 +41,5 @@ public:
 
 	Fraction operator^(int power);
 	float ConvertFraction();
+
 };

@@ -30,18 +30,17 @@ Fraction Fraction::operator/(Fraction b) {
 Fraction Fraction::operator^(int power) {
 	Fraction c;
 	if (power == 0) {
-		c.setDenominator(1);
-		c.setNumerator(1);
-		return c;
 	}
 	if (power < 0) {
 		c.setNumerator(std::pow(this->denominator, power*-1));
 		c.setDenominator(std::pow(this->numerator, power*-1));
+		c.Reduce();
 		return c;
 	}
 	else {
 		c.setNumerator(std::pow(this->numerator, power));
 		c.setDenominator(std::pow(this->denominator, power));
+		c.Reduce();
 		return c;
 	}
 }
@@ -87,5 +86,9 @@ Fraction Fraction::InputFraction() {
 	std::cin >> c.numerator;
 	std::cout << "/\n";
 	std::cin >> c.denominator;
+	if (denominator == 0) {
+		std::cerr << "\nERROR: Entered denominator is zero;changing to 1";
+		c.denominator = 1;
+	}
 	return c;
 }
