@@ -27,7 +27,7 @@ Fraction Fraction::operator/(Fraction b) {
 	c.Reduce();
 	return c;
 }
-Fraction Fraction::operator^(int power) {
+Fraction Fraction::operator^(int power) { //Unique function number 1
 	Fraction c;
 	if (power == 0) {
 	}
@@ -44,7 +44,7 @@ Fraction Fraction::operator^(int power) {
 		return c;
 	}
 }
-float Fraction::ConvertFraction() {
+float Fraction::ConvertFraction() { //Unique function number 2
 	return (float(this->numerator) / float(this->denominator));
 }
 
@@ -60,8 +60,9 @@ bool Fraction::operator==(Fraction b) {
 bool Fraction::operator!=(Fraction b) {
 	return (this->numerator * b.denominator != this->denominator * b.numerator);
 }
-int Fraction::gcd() {
+int Fraction::gcd() { //greatest common divisor
 	int result = std::min(this->denominator,this->numerator);
+	if (result<0) result*=-1;
 	while (result > 0) {
 		if (this->numerator % result == 0 && this->denominator % result == 0) {
 			break;
@@ -71,14 +72,26 @@ int Fraction::gcd() {
 	return result;
 }
 void Fraction::Reduce() {
+	if (numerator == 0) { //If the numerator is 0 the reduction is pointless 
+		denominator = 0;
+		return;
+	}
+	if (denominator == 0) {
+		std::cerr << "\nERROR: denominator is 0;changing to 1\n";
+		denominator = 1;
+	}
 	Fraction c;
 	int gcd = this->gcd();
 	this->setDenominator(denominator / gcd);
 	this->setNumerator(numerator / gcd);
+	if (this->getDenominator() < 0) {
+		denominator = denominator*-1;
+		numerator = numerator*-1;
+	}
 }
 
 void Fraction::OutputFraction() {
-	std::cout << '\n' << this->numerator << '/' << this->denominator;
+	std::cout << this->numerator << '/' << this->denominator << "\n";
 }
 
 Fraction Fraction::InputFraction() {
@@ -87,7 +100,7 @@ Fraction Fraction::InputFraction() {
 	std::cout << "/\n";
 	std::cin >> c.denominator;
 	if (denominator == 0) {
-		std::cerr << "\nERROR: Entered denominator is zero;changing to 1";
+		std::cerr << "\nERROR: Entered denominator is zero;changing to 1\n";
 		c.denominator = 1;
 	}
 	return c;
