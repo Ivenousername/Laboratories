@@ -129,12 +129,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Algorithms_1_Salesman.cpp" />
+    <ClCompile Include="Brute.cpp" />
+    <ClCompile Include="Greedy.cpp" />
     <ClCompile Include="Matrices.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Greedy.h" />
     <ClInclude Include="Matrices.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
