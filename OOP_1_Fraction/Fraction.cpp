@@ -61,8 +61,7 @@ bool Fraction::operator!=(Fraction b) {
 	return (this->numerator * b.denominator != this->denominator * b.numerator);
 }
 int Fraction::gcd() { //greatest common divisor
-	int result = std::min(this->denominator,this->numerator);
-	if (result<0) result*=-1;
+	int result = std::min(abs(this->denominator),abs(this->numerator)); //abs from cstdlib 
 	while (result > 0) {
 		if (this->numerator % result == 0 && this->denominator % result == 0) {
 			break;
