@@ -38,3 +38,9 @@ void PrintMatrix(int** matrix, int n) {
 		std::cout << '\n';
 	}
 }
+void DeleteMatrix(int** matrix, int n) {
+	for (int i = 0; i < n; i++) {
+		delete matrix[i];
+	}
+	delete matrix;
+}
