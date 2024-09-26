@@ -8,6 +8,4 @@ int Distance(int** matrix, int* current_perm, int n);
 
 void Rotate(int* permutation, int n, int starting_city);
 
-int BruteForce(int** matrix, int n_cities, int starting_city);
-
-int BruteForceWorst(int** matrix, int n_cities, int starting_city);
+int BruteForce(int** matrix, int n_cities, int starting_city, int& bruteforceworst);

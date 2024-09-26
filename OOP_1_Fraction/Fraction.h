@@ -27,20 +27,20 @@ public:
 		this->denominator = denominator;
 	}
 
-	Fraction operator+(Fraction b);
-	Fraction operator-(Fraction b);
-	Fraction operator*(Fraction b);
-	Fraction operator/(Fraction b);
-	bool operator<(Fraction b);
-	bool operator>(Fraction b);
-	bool operator==(Fraction b);
-	bool operator!=(Fraction b);
+	Fraction operator+(const Fraction b);
+	Fraction operator-(const Fraction b);
+	Fraction operator*(const Fraction b);
+	Fraction operator/(const Fraction b);
+	bool operator<(const Fraction b);
+	bool operator>(const Fraction b);
+	bool operator==(const Fraction b);
+	bool operator!=(const Fraction b);
 	void Reduce();
 	
-	void OutputFraction();
-	Fraction InputFraction();
+	void OutputFraction() const;
+	Fraction InputFraction() const;
 
 	Fraction operator^(int power);
-	float ConvertFraction();
+	float ConvertFraction() const;
 
 };

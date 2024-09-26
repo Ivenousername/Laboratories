@@ -1,26 +1,26 @@
 #include "Fraction.h"
-Fraction Fraction::operator+(Fraction b) {
+Fraction Fraction::operator+(const Fraction b) {
 	Fraction c;
 	c.setDenominator(this->denominator * b.denominator);
 	c.setNumerator(this->numerator * b.denominator + this->denominator * b.numerator);
 	c.Reduce();
 	return c;
 }
-Fraction Fraction::operator-(Fraction b) {
+Fraction Fraction::operator-(const Fraction b) {
 	Fraction c;
 	c.setDenominator(this->denominator * b.denominator);
 	c.setNumerator(this->numerator * b.denominator - this->denominator * b.numerator);
 	c.Reduce();
 	return c;
 }
-Fraction Fraction::operator*(Fraction b) {
+Fraction Fraction::operator*(const Fraction b) {
 	Fraction c;
 	c.setDenominator(this->denominator * b.denominator);
 	c.setNumerator(this->numerator * b.numerator);
 	c.Reduce();
 	return c;
 }
-Fraction Fraction::operator/(Fraction b) {
+Fraction Fraction::operator/(const Fraction b) {
 	Fraction c;
 	c.setDenominator(this->denominator * b.numerator);
 	c.setNumerator(this->numerator * b.denominator);
@@ -30,6 +30,7 @@ Fraction Fraction::operator/(Fraction b) {
 Fraction Fraction::operator^(int power) { //Unique function number 1
 	Fraction c;
 	if (power == 0) {
+		return c;
 	}
 	if (power < 0) {
 		c.setNumerator(std::pow(this->denominator, power*-1));
@@ -44,20 +45,20 @@ Fraction Fraction::operator^(int power) { //Unique function number 1
 		return c;
 	}
 }
-float Fraction::ConvertFraction() { //Unique function number 2
+float Fraction::ConvertFraction() const { //Unique function number 2
 	return (float(this->numerator) / float(this->denominator));
 }
 
-bool Fraction::operator<(Fraction b) {
+bool Fraction::operator<(const Fraction b) {
 	return (this->numerator * b.denominator < this->denominator * b.numerator);
 }
-bool Fraction::operator>(Fraction b) {
+bool Fraction::operator>(const Fraction b) {
 	return (this->numerator * b.denominator > this->denominator * b.numerator);
 }
-bool Fraction::operator==(Fraction b) {
+bool Fraction::operator==(const Fraction b) {
 	return (this->numerator * b.denominator == this->denominator * b.numerator);
 }
-bool Fraction::operator!=(Fraction b) {
+bool Fraction::operator!=(const Fraction b) {
 	return (this->numerator * b.denominator != this->denominator * b.numerator);
 }
 int Fraction::gcd() { //greatest common divisor
@@ -89,11 +90,11 @@ void Fraction::Reduce() {
 	}
 }
 
-void Fraction::OutputFraction() {
+void Fraction::OutputFraction() const {
 	std::cout << this->numerator << '/' << this->denominator << "\n";
 }
 
-Fraction Fraction::InputFraction() {
+Fraction Fraction::InputFraction() const {
 	Fraction c;
 	std::cin >> c.numerator;
 	std::cout << "/\n";

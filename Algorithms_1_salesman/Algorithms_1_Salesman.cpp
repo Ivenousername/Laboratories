@@ -25,16 +25,11 @@ int main() {
 			std::cout << "Greedy execution time: " << time_greedy.count() << " seconds\n";
 
 			auto start_bruteforce = std::chrono::high_resolution_clock::now();
-			int bf_distance = BruteForce(matrix, n, starting_city);
+			int bf_w_distance;
+			int bf_distance = BruteForce(matrix, n, starting_city,bf_w_distance);
 			auto end_bruteforce = std::chrono::high_resolution_clock::now();
 			std::chrono::duration<double> time_bruteforce = end_bruteforce - start_bruteforce;
 			std::cout << "BruteForce execution time: " << time_bruteforce.count() << " seconds\n";
-
-			auto start_bruteforceworst = std::chrono::high_resolution_clock::now();
-			int bf_w_distance = BruteForceWorst(matrix, n, starting_city);
-			auto end_bruteforceworst = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> time_bruteforceworst = end_bruteforceworst - start_bruteforceworst;
-			std::cout << "BruteForceWorst execution time: " << time_bruteforceworst.count() << " seconds\n";
 
 			std::cout << "The greedy algorithm is " << std::setprecision(2) <<
 				(time_bruteforce > time_greedy ? time_bruteforce / time_greedy : time_greedy / time_bruteforce) <<
