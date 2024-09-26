@@ -32,9 +32,9 @@ bool NextPerm(int* current_perm, int n) {
 	}
 
 	return true;
-}
+} //Dijkstra's algorithm
 
-int Distance(int** matrix, int* current_perm, int n) {
+int Distance(int** matrix, int* current_perm, int n) { //Takes a permutation and returns the distance
 	int total = 0;
 	for (int i = 0; i < n - 1; i++) {
 		total += matrix[current_perm[i]][current_perm[i + 1]];
@@ -51,7 +51,7 @@ void Rotate(int* permutation, int n, int starting_city) {
 		permutation[n - 1] = temp;
 	}
 }
-void BruteForce(int** matrix, int n_cities, int starting_city) {
+int BruteForce(int** matrix, int n_cities, int starting_city) {
 	int min_distance = INT_MAX;
 	int* current_perm = new int[n_cities];
 	for (int i = 0; i < n_cities; i++) { //setting the first permutation to be [0,1,2,3...]
@@ -70,7 +70,7 @@ void BruteForce(int** matrix, int n_cities, int starting_city) {
 		}
 	} while (NextPerm(current_perm, n_cities));
 
-	Rotate(best_perm, n_cities, starting_city);
+	Rotate(best_perm, n_cities, starting_city); 
 	std::cout << "\nThe best permutation: ";
 	for (int i = 0; i < n_cities; i++) {
 		std::cout << best_perm[i] << ' ';
@@ -80,4 +80,36 @@ void BruteForce(int** matrix, int n_cities, int starting_city) {
 
 	delete[] current_perm;
 	delete[] best_perm;
+	return min_distance;
+}
+int BruteForceWorst(int** matrix, int n_cities, int starting_city) {
+	int max_distance = INT_MIN;
+	int* current_perm = new int[n_cities];
+	for (int i = 0; i < n_cities; i++) {
+		current_perm[i] = i;
+	}
+	int* best_perm = new int[n_cities];
+	int current_distance = 0;
+
+	do {
+		current_distance = Distance(matrix, current_perm, n_cities);
+		if (current_distance > max_distance) {
+			max_distance = current_distance;
+			for (int i = 0; i < n_cities; i++) {
+				best_perm[i] = current_perm[i];
+			}
+		}
+	} while (NextPerm(current_perm, n_cities));
+
+	Rotate(best_perm, n_cities, starting_city); 
+	std::cout << "\nThe worst permutation: ";
+	for (int i = 0; i < n_cities; i++) {
+		std::cout << best_perm[i] << ' ';
+	}
+	std::cout << best_perm[0];
+	std::cout << "\nMinimum distance: " << max_distance << std::endl;
+
+	delete[] current_perm;
+	delete[] best_perm;
+	return max_distance;
 }

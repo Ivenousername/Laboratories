@@ -10,7 +10,6 @@ int** CreateMatrix(int n) {
 	return matrix;
 }
 void FillMatrixRandom(int** matrix, int n) {
-	srand(time(0));
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			if (i == j) matrix[i][j] = 0;

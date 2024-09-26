@@ -5,7 +5,7 @@ bool AvailableStep(int city, int* used_columns, int n_cities) {
     return used_columns[city] == 0; // Return true if the city has not been visited
 }
 
-void Greedy(int** matrix, int n_cities, int starting_city) {
+int Greedy(int** matrix, int n_cities, int starting_city) {
     int* path = new int[n_cities + 1];
     int* used_columns = new int[n_cities]();
     int total_distance = 0; 
@@ -45,4 +45,5 @@ void Greedy(int** matrix, int n_cities, int starting_city) {
 
     delete[] used_columns;
     delete[] path;
+	return total_distance;
 }

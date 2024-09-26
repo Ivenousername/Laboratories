@@ -1,7 +1,7 @@
 #include "Array.h"
 
 
-inline Array::Array(int size)
+Array::Array(int size)
 {
 	if (size < 0)
 	{
@@ -15,12 +15,12 @@ inline Array::Array(int size)
 	}
 }
 
-inline Array::~Array()
+Array::~Array()
 {
 	delete[] m_array;
 }
 
-inline Array::Array(const Array& other)
+Array::Array(const Array& other)
 {
 	m_size = other.m_size;
 	m_array = new int[m_size];
