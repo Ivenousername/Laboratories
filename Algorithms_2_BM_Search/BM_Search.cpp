@@ -1,20 +1,20 @@
 #include "BM_Search.h"
 
-std::vector<int> shiftTable(const string& pattern) {
-	std::vector<int> Tab(256, pattern.size());
-	for (int i = 0; i < pattern.size() - 1; i++) {
-		Tab[pattern[i]] = pattern.size() - 1 - i;
-	}
-	return Tab; 
+int* shiftTable(const string& pattern) {
+	int m = pattern.length();
+	int* table = new int[256];
+	for (int i = 0; i < 256; i++) table[i] = m;
+	for (int j = 0; j < m - 1; j++) table[pattern[j]] = m - 1 - j;
+	return table;
 }
-std::vector<int> findInInterval(const string& text, const string& pattern, int from, int to, bool firstOccurrence) {
+vector<int> findInInterval(const string& text, const string& pattern, int from, int to, bool firstOccurrence) {
 	int i, j, k = 0, p = 0;
 	std::vector<int> array;
 	if (to > text.size() - 1) {
 		to = text.size() - 1;
 	}
 
-	std::vector<int> table = shiftTable(pattern);
+	int* table = shiftTable(pattern);
 	i = from + pattern.size() - 1;
 
 	while (i <= to) {
@@ -62,7 +62,7 @@ int firstOccurrence(const string& text, const string& pattern) {
 	return -1; 
 }
 
-std::vector<int> wholeText(const string& text, const string& pattern) {
+vector<int> wholeText(const string& text, const string& pattern) {
 	return findInInterval(text, pattern, 0, text.size() - 1, false);
 }
 
@@ -73,7 +73,7 @@ void findFirst(const string& text, const string& pattern) {
 }
 
 void findAll(const string& text, const string& pattern) {
-	std::vector<int> array = wholeText(pattern, text);
+	std::vector<int> array = wholeText(text, pattern);
 	cout << "\nAll pattern beginning indexes:  ";
 	for (int n : array) {
 		cout << n << " ";

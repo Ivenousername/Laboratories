@@ -3,16 +3,17 @@
 #include <vector>
 #include <string>
 using std::string;
+using std::vector;
 using std::cout;
 using std::cin;
 
-std::vector<int> shiftTable(const string& pattern);
+int* shiftTable(const string& pattern);
 
-std::vector<int> findInInterval(const string& text, const string& pattern, int from, int to, bool firstOccurrence);
+vector<int> findInInterval(const string& text, const string& pattern, int from, int to, bool firstOccurrence);
 
 int firstOccurrence(const string& searchQuery, const string& text);
 
-std::vector<int> wholeText(const string& searchQuery, const string& text);
+vector<int> wholeText(const string& searchQuery, const string& text);
 
 void findFirst(const string& text, const string& searchQuery);
 
