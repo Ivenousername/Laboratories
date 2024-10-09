@@ -9,7 +9,7 @@ using std::cin;
 
 int* shiftTable(const string& pattern);
 
-vector<int> findInInterval(const string& text, const string& pattern, int from, int to, bool firstOccurrence);
+vector<int> BM_Search(const string& text, const string& pattern, int from, int to, bool firstOccurrence);
 
 int firstOccurrence(const string& searchQuery, const string& text);
 
