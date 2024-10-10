@@ -4,43 +4,30 @@
 #include <cstdlib> //for abs()
 class Fraction
 {
+public:
+	Fraction(int numerator = 1, int denominator = 1);
+	int getNumerator() const;
+	int getDenominator() const;
+	void SetNumerator(const int numerator);
+	void SetDenominator(const int denominator);
+	Fraction operator+(const Fraction b) const;
+	Fraction operator-(const Fraction b) const;
+	Fraction operator*(const Fraction b) const;
+	Fraction operator/(const Fraction b) const;
+	bool operator<(const Fraction b) const;
+	bool operator>(const Fraction b) const;
+	bool operator==(const Fraction b) const;
+	bool operator!=(const Fraction b) const;
+	void Reduce();
+	
+	void Output() const;
+	void Input();
+
+	Fraction operator^(const int power) const;
+	float ToFloat() const;
+
 private:
 	int numerator;
 	int denominator;
-	int gcd();
-
-public:
-	Fraction(int numerator=1, int denominator=1) {
-		setNumerator(numerator);
-		setDenominator(denominator);
-	}
-	int getNumerator() {
-		return this->numerator;
-	}
-	int getDenominator() {
-		return this->denominator;
-	}
-	void setNumerator(int numerator) {
-		this->numerator = numerator;
-	}
-	void setDenominator(int denominator) {
-		this->denominator = denominator;
-	}
-
-	Fraction operator+(const Fraction b);
-	Fraction operator-(const Fraction b);
-	Fraction operator*(const Fraction b);
-	Fraction operator/(const Fraction b);
-	bool operator<(const Fraction b);
-	bool operator>(const Fraction b);
-	bool operator==(const Fraction b);
-	bool operator!=(const Fraction b);
-	void Reduce();
-	
-	void OutputFraction() const;
-	Fraction InputFraction() const;
-
-	Fraction operator^(int power);
-	float ConvertFraction() const;
-
+	int gcd() const;
 };

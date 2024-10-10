@@ -13,8 +13,6 @@ vector<int> BM_Search(const string& text, const string& pattern, int from, int t
 
 int firstOccurrence(const string& searchQuery, const string& text);
 
-vector<int> wholeText(const string& searchQuery, const string& text);
-
 void findFirst(const string& text, const string& searchQuery);
 
 void findAll(const string& text, const string& searchQuery);

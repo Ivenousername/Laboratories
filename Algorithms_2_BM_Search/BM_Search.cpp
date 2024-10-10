@@ -61,10 +61,6 @@ int firstOccurrence(const string& text, const string& pattern) {
 	return -1; 
 }
 
-vector<int> wholeText(const string& text, const string& pattern) {
-	return BM_Search(text, pattern, 0, text.size() - 1);
-}
-
 void findFirst(const string& text, const string& pattern) {
 	int index = firstOccurrence(text, pattern);
 	cout << "\nPattern found at index  " << index << "\n";
@@ -72,7 +68,7 @@ void findFirst(const string& text, const string& pattern) {
 }
 
 void findAll(const string& text, const string& pattern) {
-	std::vector<int> array = wholeText(text, pattern);
+	std::vector<int> array = BM_Search(text,pattern, 0,text.size()-1);
 	cout << "\nAll pattern beginning indexes:  ";
 	for (int n : array) {
 		cout << n << " ";
